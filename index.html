@@ -1,12 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="ContactApp">
   <head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
     <title></title>
-  </head>
-  <body>
-    <h1> test todo</h1>
+<center><h1>TODOS</h1></center>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <script src = "node_modules/angular.js" charset= "utf-8"></script>
+  </head>
+
+<body>
+    <div class= "container">
+    <div ng-controller = "AddContactContorller">
+          <form name= "contactForm" >
+<div class="form-group">
+
+  <center>
+    <input type="text" class="form-control" style="width: 500px;"  id="title" placeholder="What is todo done?" ng-model = "title"></center>
+
+<br>
+  <center><button class="btn btn-default" ng-click="add()" ng-disabled="title==undefined || title==''">ADD</button></center>
+
+</br>
+</div>
+</form>
+  </div>
+
+
+<div ng-controller = "ListContactController">
+  <table class="table table-hover">
+     <thead>
+       <tr>
+         <th>checkbox</th>
+         <th>title</th>
+         <th>done</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr ng-repeat = "contact  in contacts">
+            <td> <input type="checkbox" ng-model="checked" ng-init="checked = false"></td>
+            <td>{{ contact.title}}</td>
+            <td><span ng-if="checked" >complete</span></td>
+          </tr>
+        </tbody>
+            </table>
+          </div>
+        </div>
+
+
+
+
+
+
+            <script src="node_modules/jquery/dist/jquery.min.js"></script>
+            <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script src="node_modules/angular/angular.js" charset="utf-8"></script>
+            <script src="app.js"></script>
   </body>
 </html>
