@@ -1,59 +1,58 @@
 <!DOCTYPE html>
-<html ng-app="ContactApp">
+<html ng-app ="TodoApp">
   <head>
-<meta charset="utf-8">
-    <title></title>
-<center><h1>TODOS</h1></center>
+    <meta charset="utf-8">
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <title>Welcome Todos</title>
   </head>
+  <body>
+    <div class="container">
+    </br>
+      <center><h1>TODOS</h1></center>
+    </br>
+      <div ng-controller="AddTodoController">
+        <form name="TodoForm">
+          <div class="form-group">
 
-<body>
-    <div class= "container">
-    <div ng-controller = "AddContactContorller">
-          <form name= "contactForm" >
-<div class="form-group">
-
-  <center>
-    <input type="text" class="form-control" style="width: 500px;"  id="title" placeholder="What is todo done?" ng-model = "title"></center>
-
-<br>
-  <center><button class="btn btn-default" ng-click="add()" ng-disabled="title==undefined || title==''">ADD</button></center>
-
-</br>
-</div>
-</form>
-  </div>
-
-
-<div ng-controller = "ListContactController">
-  <table class="table table-hover">
-     <thead>
-       <tr>
-         <th>checkbox</th>
-         <th>title</th>
-         <th>done</th>
-       </tr>
-     </thead>
-     <tbody>
-       <tr ng-repeat = "contact  in contacts">
-            <td> <input type="checkbox" ng-model="checked" ng-init="checked = false"></td>
-            <td>{{ contact.title}}</td>
-            <td><span ng-if="checked" >complete</span></td>
-          </tr>
-        </tbody>
-            </table>
+            <center><input type="text" class="form-control"   style="width: 500px;" id="Title" placeholder="What is todo done?" ng-model="title"></center>
           </div>
-        </div>
+          <center><button type="button" ng-click="add()" >ADD</button></center>
+        </form>
+      </div>
+    </br>
 
+      <div ng-controller="ListTodoController">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Checkbox</th>
+              <th>Title</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="todo in todos" >
+              <form name="CheckForm" >
+                <td><input type="checkbox"  ng-model="checked" ng-checked="todo.done" ng-click = "update(todo)"></td>
+                <td>{{ todo.title}}</td>
+                <td><ng-show ng-show = "todo.done">complete</ng-show></td>
+              </form>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/angular/angular.js" charset="utf-8"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
 
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/angular/angular.js" charset="utf-8"></script>
+    <script src="app.js"></script>
 
-
-
-
-            <script src="node_modules/jquery/dist/jquery.min.js"></script>
-            <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-            <script src="node_modules/angular/angular.js" charset="utf-8"></script>
-            <script src="app.js"></script>
   </body>
 </html>
