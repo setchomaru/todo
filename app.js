@@ -2,7 +2,10 @@ angular.module('TodoApp',[])
     .service('TodoService', function(){
       var self = this
 
-      self.todos  = []
+      self.todos  = [
+        {title: "test1", done: true},
+          {title: "test2", done: false}]
+
 
       self.list = function () {
         return self.todos
@@ -11,6 +14,7 @@ angular.module('TodoApp',[])
       self.add = function (todo) {
         self.todos.push(todo);
       }
+
 
     })
     .controller('ListTodoController', function ($scope, TodoService) {

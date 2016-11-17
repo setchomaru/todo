@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html ng-app ="TodoApp">
   <head>
@@ -16,7 +17,7 @@
 
             <center><input type="text" class="form-control"   style="width: 500px;" id="Title" placeholder="What is todo done?" ng-model="title"></center>
           </div>
-          <center><button type="button" ng-click="add()" >ADD</button></center>
+        <center><button class="btn btn-default" ng-click="add()" ng-disabled="title==undefined || title==''">ADD</button></center>
         </form>
       </div>
     </br>
@@ -33,9 +34,12 @@
           <tbody>
             <tr ng-repeat="todo in todos" >
               <form name="CheckForm" >
-                <td><input type="checkbox"  ng-model="checked" ng-checked="todo.done" ng-click = "update(todo)"></td>
+                <td><input type="checkbox" ng-init = "done = todo.done" ng-model="done" ng-checked="todo.done" ></td>
                 <td>{{ todo.title}}</td>
-                <td><ng-show ng-show = "todo.done">complete</ng-show></td>
+                <td>
+                  <div ng-if ='done'>complete</div>
+
+                </td>
               </form>
             </tr>
           </tbody>
