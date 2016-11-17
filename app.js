@@ -1,43 +1,41 @@
-angular.module('ContactApp',[])
-  .service('contactService',function(){
-    var self = this
+angular.module('TodoApp',[])
+    .service('TodoService', function(){
+      var self = this
 
-    self.contacts= []
+      self.todos  = [
+        {title: "test1", done: true},
+          {title: "test2", done: false}]
 
-    self.list = function() {
-      return self.contacts
-    }
-    self.add = function(contact){
-      self.contacts.push(contact)
-    }
-  })
 
-.controller('ListContactController',function($scope,contactService){
+      self.list = function () {
+        return self.todos
+      }
 
-  $scope.contacts =  contactService.list()
-  })
-  .controller('AddContactContorller',function ($scope,contactService){
+      self.add = function (todo) {
+        self.todos.push(todo);
+      }
 
-      $scope.add = function(){
 
-          var contact  {
+    })
+    .controller('ListTodoController', function ($scope, TodoService) {
+      $scope.todos = TodoService.list();
 
-            title: $scope.title
 
+    })
+    .controller('AddTodoController', function ($scope, TodoService) {
+         $scope.title = ''
+          $scope.add = function () {
+         if($scope.title !== ''){
+              var todo = {
+                title: $scope.title,
+                done: false
+              }
+              TodoService.add(todo)
+              resetForm()
+         }
           }
 
-        contactService.add(contact)
-
-          resetForm()
-        }
-
-
-    function resetForm()
-    {
-
-      $scope.title = ''
-
-    }
-
-
-});
+          function resetForm(){
+            $scope.title = ''
+          }
+    })
