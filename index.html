@@ -17,7 +17,7 @@
 
             <center><input type="text" class="form-control"   style="width: 500px;" id="Title" placeholder="What is todo done?" ng-model="title"></center>
           </div>
-        <center><button class="btn btn-default" ng-click="add()" ng-disabled="title==undefined || title==''">ADD</button></center>
+        <center><button class="btn btn-default" ng-click="add()" >ADD</button></center>
         </form>
       </div>
     </br>
@@ -35,7 +35,7 @@
             <tr ng-repeat="todo in todos" >
               <form name="CheckForm" >
                 <td><input type="checkbox" ng-init = "done = todo.done" ng-model="done" ng-checked="todo.done" ></td>
-                <td>{{ todo.title}}</td>
+                <td>{{todo.title}}</td>
                 <td>
                   <div ng-if ='done'>complete</div>
 
