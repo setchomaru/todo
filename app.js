@@ -4,9 +4,11 @@ angular.module('TodoApp',[])
 
       self.todos  = [
 
+
         {title:"test1", done: true},
              {title:"test2", done: false}
     ]
+
 
   self.list = function () {
         return self.todos
@@ -25,9 +27,11 @@ angular.module('TodoApp',[])
     })
 
 
+
     .controller('AddTodoController', function ($scope, TodoService) {
           $scope.title = ''
           $scope.add = function () {
+
 
               var todo = {
                 title: $scope.title,
@@ -35,11 +39,12 @@ angular.module('TodoApp',[])
               }
                 if($scope.title !== ''){
               TodoService.add(todo)
-              resetForm()
+
           $scope.done = false
          }
 
             }
+
 
           function resetForm(){
             $scope.title = ''
